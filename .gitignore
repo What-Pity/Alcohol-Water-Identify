@@ -1,3 +1,5 @@
 /reference/
 /data/
 loss_accuracy.png
+*.mat
+~*

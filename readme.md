@@ -48,7 +48,7 @@
 
 ### 正交实验
 
-1. 选用4水平5因素正交表$L_{16}(4^{5})$，定义4个因素分别为`batch size`、`learning rate`、`dropout rate`、`learning rate drop fractor`，根据官方文档给定的参数，选取实验的参数范围如下所示，例如：`batch size`取值为5、8、11、14。
+1. 选用4水平5因素正交表$L_{16}(4^{5})$，定义4个因素分别为`batch size`、`learning rate`、`dropout rate`、`learning rate drop fractor`，另外额外设置空白列。根据官方文档给定的参数，选取实验的参数范围如下所示，例如：`batch size`取值为5、8、11、14。
     ```matlab
     batch_size=[5 8 11 14];
     lr=[1e-5 5e-5 1e-4 5e-4];
@@ -65,12 +65,13 @@
    ```matlab
    输出：
     最好的组合是：
-    BatchSize=14 (影响因子：23.2)
-    LearningRate=5.0e-05(影响因子：21.1)
-    Epoch= 1(影响因子：120.6)
-    DropFractor= 0.2(影响因子：13.9)
+    BatchSize=14 (影响因子：31.1)
+    LearningRate=1.0e-05(影响因子：12.2)
+    Ephoch= 1(影响因子：76.6)
+    DropFractor= 0.1(影响因子：6.1)
+    其他因素的影响因子：5.1
     ```
-    可见`epoch`对时间的影响之大，排第二的是`batchsize`和`learning rate`。
+    可见`epoch`对时间的影响排第一位，排第二的是`batchsize`，其他因素对训练时间的影响最小，因此排除了还有其他影响训练时间的参数还未找到的可能。
 5. 其实使用正交试验表中提供的任何参数的组合计算得到的正确率都是100%。
 
 ### 修改超参数
